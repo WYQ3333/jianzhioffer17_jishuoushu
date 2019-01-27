@@ -35,11 +35,31 @@ public:
 			}
 		}
 	}
+	//从数组后面依次往前筛选，如果偶数在奇数前面，则交换，否则不交换
+};
+
+class Solution1 {
+public:
+	void reOrderArray(vector<int> &array) {
+		vector<int> result;
+		int num = array.size();
+		for (int i = 0; i<num; i++)
+		{
+			if (array[i] % 2 == 1)
+				result.push_back(array[i]);
+		}
+		for (int i = 0; i<num; i++)
+		{
+			if (array[i] % 2 == 0)
+				result.push_back(array[i]);
+		}
+		array = result;
+	}
 };
 
 void TestFunc(){
 	vector<int> array = { 1, 2, 3, 4, 5, 6, 7, 8 };
-	Solution s;
+	Solution1 s;
 	s.reOrderArray(array);
 	for (auto i : array){
 		cout << i << " ";
